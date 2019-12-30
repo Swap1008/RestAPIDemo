@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="products.GETAllProducts">
+        <methods>
+          <include name="allProducts001"/>
+        </methods>
+      </class> <!-- products.GETAllProducts -->
+      <class name="products.POSTAddProduct">
+        <methods>
+          <include name="addSingleProduct"/>
+        </methods>
+      </class> <!-- products.POSTAddProduct -->
+      <class name="products.DELETEProduct">
+        <methods>
+          <include name="deleteProduct"/>
+        </methods>
+      </class> <!-- products.DELETEProduct -->
+      <class name="products.PATCHUpdateProducts">
+        <methods>
+          <include name="updateProduct"/>
+        </methods>
+      </class> <!-- products.PATCHUpdateProducts -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

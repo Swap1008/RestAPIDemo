@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="3676" started-at="2019-12-23T13:18:45Z" finished-at="2019-12-23T13:18:48Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="3676" started-at="2019-12-23T13:18:45Z" finished-at="2019-12-23T13:18:48Z">
+      <class name="products.POSTAddProduct">
+        <test-method status="PASS" signature="addSingleProduct()[pri:0, instance:products.POSTAddProduct@6537cf78]" name="addSingleProduct" duration-ms="295" started-at="2019-12-23T13:18:48Z" finished-at="2019-12-23T13:18:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addSingleProduct -->
+      </class> <!-- products.POSTAddProduct -->
+      <class name="products.GETAllProducts">
+        <test-method status="PASS" signature="allProducts001()[pri:0, instance:products.GETAllProducts@617c74e5]" name="allProducts001" duration-ms="3167" started-at="2019-12-23T13:18:45Z" description="List of All Products" finished-at="2019-12-23T13:18:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- allProducts001 -->
+      </class> <!-- products.GETAllProducts -->
+      <class name="products.PATCHUpdateProducts">
+        <test-method status="PASS" signature="updateProduct()[pri:0, instance:products.PATCHUpdateProducts@67b6d4ae]" name="updateProduct" duration-ms="146" started-at="2019-12-23T13:18:48Z" finished-at="2019-12-23T13:18:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateProduct -->
+      </class> <!-- products.PATCHUpdateProducts -->
+      <class name="products.DELETEProduct">
+        <test-method status="PASS" signature="deleteProduct()[pri:0, instance:products.DELETEProduct@34b7bfc0]" name="deleteProduct" duration-ms="28" started-at="2019-12-23T13:18:48Z" finished-at="2019-12-23T13:18:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteProduct -->
+      </class> <!-- products.DELETEProduct -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
