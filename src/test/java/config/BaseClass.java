@@ -19,9 +19,9 @@ public class BaseClass {
 	FileInputStream propFile;
 	Properties configProp;
 
-/***
- *  
- */
+	/***
+	 *  
+	 */
 	public BaseClass() {
 		configProp = new Properties();
 		try {
@@ -50,23 +50,6 @@ public class BaseClass {
 	}
 
 	/***
-	 * GET Request: Get data of specific record based on some parameter name and
-	 * parameter value. Ex: {@link http://localhost:3030/stores/4}, where id=4,its a
-	 * path parameter
-	 * 
-	 * @param {@code String urlPath}
-	 * @param {@code String parameterName}
-	 * @param {@code String parameterValue}
-	 * @return Response
-	 * @author Swapnil Naidu
-	 */
-	public Response GETRequest(String urlPath, String parameterName, String parameterValue) {
-
-		return given().param(parameterName, parameterValue).when().get(urlPath).then().extract().response();
-
-	}
-
-	/***
 	 * POST Request: To Add a new record using JsonObject.
 	 * 
 	 * @param {@code  jsonObject}
@@ -80,9 +63,54 @@ public class BaseClass {
 				.then().extract().response();
 	}
 
+//	=================================================Path Parameters==================================================================//
+
 	/***
-	 * PUT Request: To Update entire record based on particular parameterName and
-	 * respective parameterValue.Complete payload/jsonObject has to be sent.
+	 * GET Request [using Path parameters]: Get data of specific record based on
+	 * some parameter name and parameter value. Ex:
+	 * {@link http://localhost:3030/stores/4}, where id=4,its a path parameter
+	 * 
+	 * @param {@code String urlPath}
+	 * @param {@code String parameterName}
+	 * @param {@code String parameterValue}
+	 * @return Response
+	 * @author Swapnil Naidu
+	 */
+	public Response GETRequest(String urlPath, String parameterName, String parameterValue,String parameterType) {
+
+		Response response = null;
+		switch (parameterType.toLowerCase()) {
+		case "path": 
+				response=given()
+				.pathParam(parameterName, parameterValue)
+				.when()
+				.get(urlPath + "{" + parameterName + "}")
+				.then()
+				.extract()
+				.response();
+				break;
+		case "query":
+			response=given()
+			.queryParam(parameterName, parameterValue)
+			.when()
+			.get(urlPath)
+			.then()
+			.extract()
+			.response();
+	
+				break;
+		default:
+			   System.out.println("Invalid Parameter type.Enter a valid parameter");
+				break;
+		}
+			return response;
+
+	}
+
+	/***
+	 * PUT Request [using path parameters]: To Update entire record based on
+	 * particular parameterName and respective parameterValue.Complete
+	 * payload/jsonObject has to be sent.
 	 * 
 	 * @param jsonObj
 	 * @param urlPath
@@ -91,22 +119,47 @@ public class BaseClass {
 	 * @return Response
 	 * @author Swapnil Naidu
 	 */
-	public Response PUTRequest(JSONObject jsonObj, String urlPath, String parameterName, String parameterValue) {
-		return given()
+	public Response PUTRequest(JSONObject jsonObj, String urlPath, String parameterName, String parameterValue,String parameterType) {
+		Response response = null;
+		switch (parameterType.toLowerCase()) {
+		case "path": 
+			response=given()
 				.pathParam(parameterName, parameterValue)
 				.header("Content-Type", "application/json")
 				.body(jsonObj.toJSONString())
 				.when()
-				.put(urlPath+"{"+parameterName+"}")
+				.put(urlPath + "{" + parameterName + "}")
 				.then()
 				.extract()
 				.response();
+			
+			break;
+			case "query":
+				response=given()
+				.queryParam(parameterName, parameterValue)
+				.header("Content-Type", "application/json")
+				.body(jsonObj.toJSONString())
+				.when()
+				.put(urlPath)
+				.then()
+				.extract()
+				.response();
+			break;
+			default:
+				   System.out.println("Invalid Parameter type.Enter a valid parameter");
+					break;
+			}
+				return response;
+			
 	}
 
 	/***
-	 * DELETE Request: To delete a particular record based upon path parameter,
-	 * parameterName and parameterValue. 
-	 * Ex: {@link http://localhost:3030/stores/8928} where 8928 is id {@link http://localhost:3030/stores/{id}}
+	 * DELETE Request [using Path parameters]: To delete a particular record based
+	 * upon path or query parameter, parameterName and parameterValue. 
+	 * User can get the response based on type of parameter i.e path or query.
+	 * Ex:
+	 * {@link http://localhost:3030/stores/8928} where 8928 is id
+	 * {@link http://localhost:3030/stores/{id}}
 	 * 
 	 * @param urlPath
 	 * @param parameterName
@@ -114,14 +167,39 @@ public class BaseClass {
 	 * @return Response
 	 * @author Swapnil Naidu
 	 */
-	public Response DELETERequest(String urlPath, String parameterName, String parameterValue) {
-		return given().pathParam(parameterName, parameterValue).when().delete(urlPath + "{" + parameterName + "}")
-				.then().extract().response();
+	public Response DELETERequest(String urlPath, String parameterName, String parameterValue,String parameterType) {
+		Response response = null;
+		switch (parameterType.toLowerCase()) {
+		case "path":
+		response= given()
+				.pathParam(parameterName, parameterValue)
+				.when()
+				.delete(urlPath + "{" + parameterName + "}")
+				.then()
+				.extract()
+				.response();
+		break;
+		case "query":
+			response= given()
+			.queryParam(parameterName, parameterValue)
+			.when()
+			.delete(urlPath)
+			.then()
+			.extract()
+			.response();
+	   break;
+	   default:
+		   System.out.println("Invalid Parameter type.Enter a valid parameter");
+			break;
+		}
+		return response;
 	}
-	
+
 	/****
-	 * PATCH Request: Used when only a few details of a record needs to be updated, using parameterName as
-	 * the reference field  and jsonObject as the record data.
+	 * PATCH Request [using Path parameters]: Used when only a few details of a
+	 * record needs to be updated, using parameterName as the reference field and
+	 * jsonObject as the record data.User can get the response based on type of parameter i.e path or query.
+	 * 
 	 * @param {@code String } urlPath
 	 * @param {@code JSONObject } jsonObj
 	 * @param {@code String } parameterName
@@ -129,16 +207,40 @@ public class BaseClass {
 	 * @return {@literal Response }
 	 * @author Swapnil Naidu
 	 */
-	public Response PATCHRequest(String urlPath,JSONObject jsonObj ,String parameterName, String parameterValue) {
-		return given()
-				.pathParam(parameterName, parameterValue)
-				.header("Content-Type", "application/json")
-				.body(jsonObj.toJSONString())
-				.when()
-				.patch(urlPath+"{"+parameterName+"}")
-				.then()
-				.extract()
-				.response();
+	public Response PATCHRequest(String urlPath, JSONObject jsonObj, String parameterName, String parameterValue,String parameterType) {
+		Response response = null;
+		switch (parameterType.toLowerCase()) {
+		case "path":
+			response = given()
+						.pathParam(parameterName, parameterValue)
+						.header("Content-Type", "application/json")
+						.body(jsonObj.toJSONString())
+						.when()
+						.patch(urlPath + "{" + parameterName + "}")
+						.then()
+						.extract()
+						.response();
+			break;
+		case "query":
+			response = given()
+						.queryParam(parameterName, parameterValue)
+						.header("Content-Type", "application/json")
+						.body(jsonObj.toJSONString())
+						.when()
+						.patch(urlPath)
+						.then()
+						.extract()
+						.response();
+			break;
+
+		default:
+			System.out.println("Invalid Parameter type.Enter a valid parameter");
+			break;
+
+		}
+		return response;
 	}
-	
+
+//	=======================================================Query Parameters===================================================================//
+
 }

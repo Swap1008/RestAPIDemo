@@ -33,7 +33,7 @@ public class JsonPathExpression extends BaseClass {
 
 	@Test(invocationCount = 0)
 	public void tc002() {
-		Response response = GETRequest("stores/", "id", "4");
+		Response response = GETRequest("stores/", "id", "4","path");
 //		System.out.println(response.jsonPath().prettify());
 	}
 
@@ -61,7 +61,7 @@ public class JsonPathExpression extends BaseClass {
 	
 	@Test(invocationCount = 0)
 	public void tc004() {
-		Response response=DELETERequest("stores/", "id","8928");
+		Response response=DELETERequest("stores/", "id","8928","path");
 		
 		
 		System.out.println(response.getStatusCode());
@@ -75,7 +75,7 @@ public class JsonPathExpression extends BaseClass {
 		obj.put("name", "TechnoSys");
 
 		
-		Response response=PATCHRequest("stores/", obj, "id", "8927");
+		Response response=PATCHRequest("stores/", obj, "id", "8927","path");
 		System.out.println(response.getStatusCode());
 		System.out.println(response.getStatusLine());
 	}
@@ -95,7 +95,7 @@ public class JsonPathExpression extends BaseClass {
 		obj.put("lng", 430);
 		obj.put("hours", "12");
 		
-		Response response=PUTRequest(obj, "stores/","id", "8927");
+		Response response=PUTRequest(obj, "stores/","id", "8927","path");
 		
 		System.out.println(response.getStatusCode());
 		System.out.println(response.getStatusLine());

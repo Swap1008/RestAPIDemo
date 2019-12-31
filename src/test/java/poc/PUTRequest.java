@@ -23,7 +23,7 @@ public class PUTRequest extends BaseClass {
 		obj.put("lng", 430);
 		obj.put("hours", "12");
 
-		Response response = PUTRequest(obj, "stores/", "id", "8927");
+		Response response = PUTRequest(obj, "stores/", "id", "8927","path");
 
 		System.out.println(response.getStatusCode());
 		System.out.println(response.getStatusLine());

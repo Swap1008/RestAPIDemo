@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="demo.JsonPathExpression">
+      <class name="poc.PATCHRequest">
         <methods>
-          <include name="tc006"/>
+          <include name="tc005"/>
         </methods>
-      </class> <!-- demo.JsonPathExpression -->
+      </class> <!-- poc.PATCHRequest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

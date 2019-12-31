@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1632" started-at="2019-12-30T11:49:25Z" finished-at="2019-12-30T11:49:26Z">
+  <suite name="Default suite" duration-ms="2510" started-at="2019-12-31T12:47:56Z" finished-at="2019-12-31T12:47:58Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1632" started-at="2019-12-30T11:49:25Z" finished-at="2019-12-30T11:49:26Z">
-      <class name="demo.JsonPathExpression">
-        <test-method status="PASS" signature="tc006()[pri:0, instance:demo.JsonPathExpression@3c41ed1d]" name="tc006" duration-ms="1584" started-at="2019-12-30T11:49:25Z" finished-at="2019-12-30T11:49:26Z">
+    <test name="Default test" duration-ms="2510" started-at="2019-12-31T12:47:56Z" finished-at="2019-12-31T12:47:58Z">
+      <class name="poc.PATCHRequest">
+        <test-method status="PASS" signature="tc005()[pri:0, instance:poc.PATCHRequest@3c41ed1d]" name="tc005" duration-ms="2472" started-at="2019-12-31T12:47:56Z" finished-at="2019-12-31T12:47:58Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc006 -->
-      </class> <!-- demo.JsonPathExpression -->
+        </test-method> <!-- tc005 -->
+      </class> <!-- poc.PATCHRequest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
